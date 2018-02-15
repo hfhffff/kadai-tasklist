@@ -16,6 +16,7 @@ class TasksController < ApplicationController
     
     if @task.save
       flash[:success] = 'OK！'
+      redirect_to @task
     else
       flash.now[:danger] = '記録失敗'
       render :new
@@ -43,13 +44,13 @@ class TasksController < ApplicationController
     @task.destroy
     
     flash[:success] = 'OK!'
-    redirect_to messages_url
+    redirect_to tasks_url
   end
+  
   
   private
   
   def task_params
     params.require(:task).permit(:content)
   end
-
 end
