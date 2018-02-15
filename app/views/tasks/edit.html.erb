@@ -2,15 +2,6 @@
 <%= @task.id %>
 番目のタスク修正ページ</h1>
 
-<%= form_for(@task) do |f| %>
-
-<%= f.label :content, '記録内容' %>
-
-<%= f.text_field :content %>
-
-
-<%= f.submit '記録する' %>
-
-<% end %>
+<%= render 'form', task: @task %>
 
 <%= link_to '一覧に戻る', tasks_path %>
