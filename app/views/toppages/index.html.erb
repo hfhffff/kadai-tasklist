@@ -1,5 +1,27 @@
 <% if logged_in? %>
-  <p>ログイン完了ユーザー: <%= current_user.name %></p>
+  <div class="row">
+    <div class="col-xs-8">
+      <h1>タスクリスト</h1>
+  
+        <ul>
+          
+        <% @tasks.each do |task| %>
+          
+          <li>
+            <%= link_to task.id, task %>
+            :
+            <%= task.status %>
+             &gt;
+            <%= task.content %>
+          </li>
+          
+        <% end %>
+          
+        </ul>
+  
+  <%= link_to 'タスクを追加', new_task_path %>
+    </div>
+  </div>
 <% else %>
   <div class="center jumbotron">
   <div class="text-center">
