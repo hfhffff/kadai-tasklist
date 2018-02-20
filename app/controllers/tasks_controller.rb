@@ -1,10 +1,11 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:update]
+  before_action :correct_user, only: [:edit, :update, :show, :destroy]
   
   def index
     @task = Task.all
+    @tasks = current_user.tasks.order('created_at DESC')
   end
 
   def show
